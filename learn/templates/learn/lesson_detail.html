@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ lesson.title }}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script>
+        function checkAnswer(choiceId) {
+            fetch("", {
+                method: "POST",
+                body: new URLSearchParams({ "choice_id": choiceId }),
+                headers: { "X-CSRFToken": "{{ csrf_token }}" }
+            })
+            .then(response => response.json())
+            .then(data => {
+                let feedback = document.getElementById("feedback");
+                let continueBtn = document.getElementById("continue");
+
+                if (data.correct) {
+                    feedback.innerHTML = "✅ Correct!";
+                    continueBtn.style.display = "block";
+                } else {
+                    feedback.innerHTML = "❌ Wrong, try again!";
+                }
+
+                feedback.style.display = "block";
+            });
+        }
+
+        function nextExercise(nextOrder) {
+            window.location.href = nextOrder > {{ lesson.exercises.count }} 
+                ? "{% url 'learn:course_detail' lesson.course.id %}" 
+                : "{% url 'learn:lesson_detail_order' lesson.id next_order %}";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ lesson.title }}</h1>
+
+        <div class="exercise-box">
+            <h2>{{ exercise.order }}/{{ exercises_count }}</h2>
+            <p class="exercise-text">{{ exercise.text }}</p>
+
+            <div class="choices">
+                {% for choice in choices %}
+                    <button class="choice-btn" onclick="checkAnswer('{{ choice.id }}')">{{ choice.text }}</button>
+                {% endfor %}
+            </div>
+
+            <p id="feedback" class="feedback-message" style="display: none;"></p>
+            <button id="continue" class="continue-btn" style="display: none;" onclick="nextExercise({{ next_order }})">Continue</button>
+        </div>
+
+        <a href="{% url 'learn:course_detail' lesson.course.id %}" class="back-link">Back to Course</a>
+    </div>
+</body>
+</html>

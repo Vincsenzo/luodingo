@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ course.title }}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ course.title }}</h1>
+
+        <div class="lesson-list">
+            {% for lesson in course.lessons.all %}
+                <div class="lesson">
+                    <a href="{% url 'learn:lesson_detail' lesson.id %}">{{ lesson.title }}</a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <a href="{% url 'create:upload_lesson' course.id %}" class="upload-button">Upload CSV to Create Lesson</a>
+        <br>
+        <a href="{% url 'learn:index' %}" class="back-link">Back to Courses</a>
+    </div>
+</body>
+</html>
