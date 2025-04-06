@@ -1,13 +1,12 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Lesson</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-<body>
+{% block title %}Upload Lesson{% endblock title %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'upload.css' %}">
+{% endblock %}
+
+
+{% block content %}
     <div class="container">
         <h1>Upload Lesson for {{ course.title }}</h1>
 
@@ -34,5 +33,4 @@ Question text,right answer,wrong answer,wrong answer,wrong answer
 
         <a href="{% url 'learn:course_detail' course.id %}" class="back-link">Back to Course</a>
     </div>
-</body>
-</html>
+{% endblock content %}

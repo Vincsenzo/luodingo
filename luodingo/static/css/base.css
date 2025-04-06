@@ -1,0 +1,51 @@
+/* Base styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: #0078FF;
+    font-weight: bold;
+    display: block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #0078FF;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #222;
+        color: #ddd;
+    }
+
+    a {
+        color: #66b3ff;
+    }
+
+    .back-link {
+        color: #66b3ff;
+    }
+}

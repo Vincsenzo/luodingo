@@ -7,5 +7,5 @@ urlpatterns = [
     path('learn/', include('learn.urls')),
     path('create/', include('create.urls')),
 
-     path('', RedirectView.as_view(url='/learn/', permanent=True)),
+    path('', RedirectView.as_view(url='/learn/', permanent=True)),
 ]

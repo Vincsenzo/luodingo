@@ -1,0 +1,96 @@
+/* Lesson styling */
+.exercise-box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    /* width: 100%; */
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Answer Choices */
+.choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.choice-btn {
+    background-color: #0078FF;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.choice-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Feedback Messages */
+.feedback-message {
+    margin-top: 15px;
+    font-weight: bold;
+    display: none;
+}
+
+.correct {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}
+
+/* Continue Button */
+.continue-btn {
+    margin-top: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
+    /* display: block; */
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.continue-btn:hover {
+    background-color: #218838;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .exercise-box {
+        background-color: #333;
+        border: 1px solid #555;
+    }
+
+    .choice-btn {
+        background-color: #66b3ff;
+    }
+
+    .choice-btn:hover {
+        background-color: #448cd6;
+    }
+
+    .continue-btn {
+        background-color: #2ecc71;
+    }
+
+    .continue-btn:hover {
+        background-color: #25a25a;
+    }
+}

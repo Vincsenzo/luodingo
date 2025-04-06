@@ -1,0 +1,51 @@
+/* Lesson-list styling */
+.lesson-list {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    margin: 20px auto;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lesson {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.lesson:last-child {
+    border-bottom: none;
+}
+
+.upload-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #0078FF;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.upload-button:hover {
+    background-color: #0056b3;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .lesson-list {
+        background-color: #333;
+        border: 1px solid #555;
+    }
+
+    .lesson {
+        border-bottom: 1px solid #555;
+    }
+
+    .back-link {
+        color: #66b3ff;
+    }
+}
