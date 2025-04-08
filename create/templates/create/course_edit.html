@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}{{ course.title }}{% endblock title %}
+{% block title %}Edit - {{ course.title }}{% endblock title %}
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'course.css' %}">
 {% endblock %}
@@ -12,12 +12,14 @@
         <div class="lesson-list">
             {% for lesson in course.lessons.all %}
                 <div class="lesson">
-                    <a href="{% url 'learn:lesson_detail' lesson.id %}">{{ lesson.title }}</a>
+                    <a href="{% url 'learn:lesson_detail' lesson.id %}" class="inline-a">{{ lesson.title }}</a> -
+                    <a href="#" class="inline-a">Edit</a>
                 </div>
             {% endfor %}
         </div>
 
-        <a href="{% url 'learn:index' %}" class="back-link">Back to Courses</a> |
-        <a href="{% url 'create:course_edit' course.id %}" class="back-link">Edit Course</a>
+        <a href="{% url 'create:upload_lesson' course.id %}" class="upload-button">Upload Course CSV</a>
+        </br>
+        <a href="{% url 'learn:course_detail' course.id %}" class="back-link">Done</a>
     </div>
 {% endblock content %}

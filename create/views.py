@@ -5,6 +5,12 @@ from django.core.files.base import ContentFile
 from learn.models import Course, Lesson, Exercise, AnswerChoice
 from django.contrib import messages
 
+
+def course_edit(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+    return render(request, 'create/course_edit.html', {'course': course})
+
+
 def upload_lesson(request, course_id):
     course = get_object_or_404(Course, id=course_id)
 
